@@ -87,13 +87,13 @@ impl Default for PhysicsDebugPlugin {
 impl Plugin for PhysicsDebugPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<PhysicsDebugConfig>()
-            .insert_resource(GizmoConfig {
-                #[cfg(feature = "2d")]
-                line_width: 2.0,
-                #[cfg(feature = "3d")]
-                line_width: 1.5,
-                ..default()
-            })
+            // .insert_resource(GizmoConfig {
+            //     #[cfg(feature = "2d")]
+            //     line_width: 2.0,
+            //     #[cfg(feature = "3d")]
+            //     line_width: 1.5,
+            //     ..default()
+            // })
             .register_type::<PhysicsDebugConfig>()
             .register_type::<DebugRender>()
             .add_systems(

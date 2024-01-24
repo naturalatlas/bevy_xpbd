@@ -104,7 +104,7 @@ fn setup(
 
 fn movement(
     time: Res<Time>,
-    keyboard_input: Res<Input<KeyCode>>,
+    keyboard_input: Res<ButtonInput<KeyCode>>,
     mut marbles: Query<&mut LinearVelocity, With<Marble>>,
 ) {
     // Precision is adjusted so that the example works with

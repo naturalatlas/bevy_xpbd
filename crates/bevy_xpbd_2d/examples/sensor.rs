@@ -48,8 +48,7 @@ fn setup(
                         radius: 12.5,
                         depth: 20.0,
                         ..default()
-                    }
-                    .into(),
+                    },
                 )
                 .into(),
             material: materials.add(ColorMaterial::from(Color::rgb(0.2, 0.7, 0.9))),
@@ -110,7 +109,7 @@ pub enum MovementAction {
 // use velocity
 fn keyboard_input1(
     mut movement_event_writer: EventWriter<MovementAction>,
-    keyboard_input: Res<Input<KeyCode>>,
+    keyboard_input: Res<ButtonInput<KeyCode>>,
     time: Res<Time<Physics>>,
 ) {
     if time.is_paused() {
@@ -122,10 +121,10 @@ fn keyboard_input1(
         return;
     }
 
-    let left = keyboard_input.any_pressed([KeyCode::A]);
-    let right = keyboard_input.any_pressed([KeyCode::D]);
-    let up = keyboard_input.any_pressed([KeyCode::W]);
-    let down = keyboard_input.any_pressed([KeyCode::S]);
+    let left = keyboard_input.any_pressed([KeyCode::KeyA]);
+    let right = keyboard_input.any_pressed([KeyCode::KeyD]);
+    let up = keyboard_input.any_pressed([KeyCode::KeyW]);
+    let down = keyboard_input.any_pressed([KeyCode::KeyS]);
     let horizontal = right as i8 - left as i8;
     let vertical = up as i8 - down as i8;
     let direction = Vector::new(horizontal as Scalar, vertical as Scalar);
@@ -136,16 +135,16 @@ fn keyboard_input1(
 // use position offset
 fn keyboard_input2(
     mut movement_event_writer: EventWriter<MovementAction>,
-    keyboard_input: Res<Input<KeyCode>>,
+    keyboard_input: Res<ButtonInput<KeyCode>>,
     time: Res<Time<Physics>>,
 ) {
     if time.is_paused() {
         return;
     }
-    let left = keyboard_input.any_pressed([KeyCode::Left]);
-    let right = keyboard_input.any_pressed([KeyCode::Right]);
-    let up = keyboard_input.any_pressed([KeyCode::Up]);
-    let down = keyboard_input.any_pressed([KeyCode::Down]);
+    let left = keyboard_input.any_pressed([KeyCode::ArrowLeft]);
+    let right = keyboard_input.any_pressed([KeyCode::ArrowRight]);
+    let up = keyboard_input.any_pressed([KeyCode::ArrowUp]);
+    let down = keyboard_input.any_pressed([KeyCode::ArrowDown]);
     let horizontal = right as i8 - left as i8;
     let vertical = up as i8 - down as i8;
     let direction = Vector::new(horizontal as Scalar, vertical as Scalar);
